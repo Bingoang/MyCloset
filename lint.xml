@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="SetJavaScriptEnabled">
+        <ignore path="src/com/example/mycloset/ShopActivity.java" />
+    </issue>
+    <issue id="SimpleDateFormat">
+        <ignore path="src/com/example/mycloset/AddActivity.java" />
+    </issue>
+</lint>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/clothesTitle"
+        android:contentDescription="@string/description"
+        android:layout_width="186dp"
+        android:layout_height="116dp"
+        android:layout_gravity="center_horizontal"
+         android:layout_weight="2"
+        android:src="@drawable/clothe"/>
+
+    <ImageView
+        android:id="@+id/tops"
+        android:contentDescription="@string/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+         android:layout_weight="1"
+        android:src="@drawable/tops" />
+
+    <ImageView
+        android:id="@+id/pants"
+        android:contentDescription="@string/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+         android:layout_weight="1"
+        android:src="@drawable/pants" />
+
+    <ImageView
+        android:id="@+id/skirt"
+        android:contentDescription="@string/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+         android:layout_weight="1"
+        android:src="@drawable/skirt" />
+
+    <ImageView
+        android:id="@+id/shoes"
+        android:contentDescription="@string/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+         android:layout_weight="1"
+        android:src="@drawable/shoes" />
+
+</LinearLayout>
