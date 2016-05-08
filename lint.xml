@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
+    <issue id="HandlerLeak">
+        <ignore path="src/com/example/kinect/ClientThread.java" />
+        <ignore path="src/com/example/kinect/KinectActivity.java" />
+        <ignore path="src/com/example/mycloset/KinectActivity.java" />
+    </issue>
     <issue id="SetJavaScriptEnabled">
         <ignore path="src/com/example/mycloset/ShopActivity.java" />
     </issue>

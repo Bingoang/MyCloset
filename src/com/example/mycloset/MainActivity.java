@@ -1,5 +1,7 @@
 package com.example.mycloset;
 
+import com.example.kinect.KinectActivity;
+
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -48,18 +50,18 @@ public class MainActivity extends Activity implements OnClickListener {
 			break;
 
 		case R.id.kbtn:
-			// Intent i3 = new Intent(this, KinectActivity.class);
-			// i3.putExtra("flag", "3");
-			// startActivity(i3);
-			Toast toast = null;
-			toast = Toast.makeText(getApplicationContext(), "嘿嘿，即将上线，敬请期待！",
-					Toast.LENGTH_SHORT);
-			toast.setGravity(Gravity.CENTER, 0, 0);
-			LinearLayout toastView = (LinearLayout) toast.getView();
-			ImageView imageCodeProject = new ImageView(getApplicationContext());
-			imageCodeProject.setImageResource(R.drawable.nice);
-			toastView.addView(imageCodeProject, 0);
-			toast.show();
+			 Intent i3 = new Intent(this, KinectActivity.class);
+			 i3.putExtra("flag", "3");
+			 startActivity(i3);
+//			Toast toast = null;
+//			toast = Toast.makeText(getApplicationContext(), "嘿嘿，即将上线，敬请期待！",
+//					Toast.LENGTH_SHORT);
+//			toast.setGravity(Gravity.CENTER, 0, 0);
+//			LinearLayout toastView = (LinearLayout) toast.getView();
+//			ImageView imageCodeProject = new ImageView(getApplicationContext());
+//			imageCodeProject.setImageResource(R.drawable.nice);
+//			toastView.addView(imageCodeProject, 0);
+//			toast.show();
 			break;
 
 		case R.id.abtn:

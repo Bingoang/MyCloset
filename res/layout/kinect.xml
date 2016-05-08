@@ -5,10 +5,70 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView1"
-        android:layout_gravity="center_horizontal"
+        android:id="@+id/state"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="即将上线，敬请期待！" />
+        android:layout_gravity="center_horizontal"
+        android:textSize="30sp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:text="状态：未连接！" />
+
+    <Button
+        android:id="@+id/connect"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="50dp"
+        android:text="Connect"
+        android:textSize="30sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/shirt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="shirt" />
+
+        <Button
+            android:id="@+id/pantskirt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="pant/skirt" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/bag"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="bag" />
+
+        <Button
+            android:id="@+id/dress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="dress" />
+    </LinearLayout>
+    
+    
+        <Button
+            android:id="@+id/all"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="all" />
 
 </LinearLayout>

@@ -45,11 +45,31 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.example.mycloset.KinectActivity"
+            android:name="com.example.kinect.KinectActivity"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.example.mycloset.AboutActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.example.kinect.ShirtActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.example.kinect.PantSkirtActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.example.kinect.BagActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.example.kinect.DressActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.example.kinect.AllActivity"
             android:screenOrientation="portrait" >
         </activity>
     </application>
