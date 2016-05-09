@@ -1,5 +1,6 @@
 package com.example.mycloset;
 
+import com.example.clothes.MyClothesActivity;
 import com.example.kinect.KinectActivity;
 
 import android.os.Bundle;
