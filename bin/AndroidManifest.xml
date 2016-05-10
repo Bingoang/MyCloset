@@ -108,6 +108,10 @@
             android:name="com.example.clothes.PantsActivity"
             android:screenOrientation="portrait" >
         </activity>
+                <activity
+            android:name="com.example.kinect.DetailsActivity"
+            android:screenOrientation="portrait" >
+        </activity>
     </application>
 
 </manifest>
