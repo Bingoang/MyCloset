@@ -63,42 +63,42 @@ public class ShirtActivity extends Activity implements OnClickListener {
 		i = new Intent(this, DetailsActivity.class);
 		switch (v.getId()) {
 		case R.id.s0:
-			i.putExtra("f", "8");// 键值对.值为string类型
+			i.putExtra("flag", "10");// 键值对.值为string类型
 			startActivity(i);
 			break;
 			
 		case R.id.s1:
-			i.putExtra("f", "11");// 键值对.值为string类型
+			i.putExtra("flag", "11");// 键值对.值为string类型
 			startActivity(i);
 			break;
 			
 		case R.id.s2:
-			i.putExtra("f", "12");// 键值对.值为string类型
+			i.putExtra("flag", "12");// 键值对.值为string类型
 			startActivity(i);
 			break;
 			
 		case R.id.s3:
-			i.putExtra("f", "13");// 键值对.值为string类型
+			i.putExtra("flag", "13");// 键值对.值为string类型
 			startActivity(i);
 			break;
 			
 		case R.id.s4:
-			i.putExtra("f", "14");// 键值对.值为string类型
+			i.putExtra("flag", "14");// 键值对.值为string类型
 			startActivity(i);
 			break;
 			
 		case R.id.s5:
-			i.putExtra("f", "15");// 键值对.值为string类型
+			i.putExtra("flag", "15");// 键值对.值为string类型
 			startActivity(i);
 			break;
 			
 		case R.id.s6:
-			i.putExtra("f", "16");// 键值对.值为string类型
+			i.putExtra("flag", "16");// 键值对.值为string类型
 			startActivity(i);
 			break;
 			
 		case R.id.s7:
-			i.putExtra("f", "17");// 键值对.值为string类型
+			i.putExtra("flag", "17");// 键值对.值为string类型
 			startActivity(i);
 			break;
 

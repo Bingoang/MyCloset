@@ -27,41 +27,43 @@ public class DetailsActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.details);
 		initView();
-		val = getIntent().getStringExtra("f");// 接收按钮传来的价值对flag
-		Log.v("ang",val+"");
-//			Toast.makeText(this, "接收到" + val, Toast.LENGTH_SHORT)
-//					.show();
-//		show();
+		val = getIntent().getStringExtra("flag");// 接收按钮传来的价值对flag
+		Log.v("ang", val);
+		 show();
 	}
 
 	private void show() {
 		val = getIntent().getStringExtra("flag");// 接收按钮传来的价值对flag
-		if (val == "10") {
+		if (val .equals("10")) {
 			photo.setImageLevel(0);
 			photo.setScaleType(ScaleType.CENTER_CROP);
 		}
-		if (val == "11") {
+		if (val .equals( "11")) {
 			photo.setImageLevel(1);
 			photo.setScaleType(ScaleType.CENTER_CROP);
 		}
-		if (val == "12") {
+		if (val .equals("12")) {
 			photo.setImageLevel(2);
 			photo.setScaleType(ScaleType.CENTER_CROP);
 		}
-		if (val == "13") {
+		if (val .equals( "13")) {
 			photo.setImageLevel(3);
 			photo.setScaleType(ScaleType.CENTER_CROP);
 		}
-		if (val == "14") {
+		if (val.equals("14")) {
 			photo.setImageLevel(4);
 			photo.setScaleType(ScaleType.CENTER_CROP);
 		}
-		if (val == "15") {
+		if (val .equals("15")) {
 			photo.setImageLevel(5);
 			photo.setScaleType(ScaleType.CENTER_CROP);
 		}
-		if (val == "16") {
+		if (val .equals( "16")) {
 			photo.setImageLevel(6);
+			photo.setScaleType(ScaleType.CENTER_CROP);
+		}
+		if (val .equals( "17")) {
+			photo.setImageLevel(7);
 			photo.setScaleType(ScaleType.CENTER_CROP);
 		}
 
@@ -88,39 +90,39 @@ public class DetailsActivity extends Activity implements OnClickListener {
 				// 然后发送给子线程Handler
 				Message msg = new Message();
 				msg.what = 0x345;
-				msg.obj = "0";
+
+				if (val.equals("10") || val.equals("20") || val.equals("30")
+						|| val.equals("40")) {
+					msg.obj = "0";
+				}
+
+				if (val.equals("11") || val.equals("21") || val.equals("31")
+						|| val.equals("41")) {
+					msg.obj = "1";
+				}
+
+				if (val.equals("12") || val.equals("22") || val.equals("32")) {
+					msg.obj = "2";
+				}
+
+				if (val.equals("13") || val.equals("23") || val.equals("33")) {
+					msg.obj = "3";
+				}
+
+				if (val.equals("14") || val.equals("24") || val.equals("34")) {
+					msg.obj = "4";
+				}
+
+				if (val.equals("15") || val.equals("25") || val.equals("35")) {
+					msg.obj = "5";
+				}
+				if (val.equals("16")) {
+					msg.obj = "6";
+				}
+				if (val.equals("17")) {
+					msg.obj = "7";
+				}
 				KinectActivity.getClientThread().revHandler.sendMessage(msg);
-				// || val == "20" || val == "30" || val == "40"
-//				if (val == "10") {
-//					Toast.makeText(this, "接收到" + val, Toast.LENGTH_SHORT)
-//							.show();
-//				}
-				// if (val == "11"||val =="21"||val =="31"||val =="41") {
-				// msg.obj = "1";
-				// }
-				//
-				// if (val == "12"||val =="22"||val =="32") {
-				// msg.obj = "2";
-				// }
-				//
-				// if (val == "13"||val =="23"||val =="33") {
-				// msg.obj = "3";
-				// }
-				//
-				// if (val == "14"||val =="24"||val =="34") {
-				// msg.obj = "4";
-				// }
-				//
-				// if (val == "15"||val =="25"||val =="35") {
-				// msg.obj = "5";
-				// }
-				// if (val == "16") {
-				// msg.obj = "6";
-				// }
-				// if (val == "17") {
-				// msg.obj = "7";
-				// }
-				//
 
 			} catch (Exception e) {
 
