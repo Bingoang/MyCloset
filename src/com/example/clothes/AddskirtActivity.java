@@ -1,4 +1,4 @@
-package com.example.mycloset;
+package com.example.clothes;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,6 +6,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import com.example.mycloset.R;
+import com.example.mycloset.R.id;
+import com.example.mycloset.R.layout;
+
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -27,22 +32,21 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-public class AddActivity extends Activity implements OnClickListener {// 2个按钮，所以用接口实现
+public class AddskirtActivity extends Activity implements OnClickListener {// 2个按钮，所以用接口实现
 	private String val;// 用来接收按传过来的flag
 	private Button savebtn, canclebtn;
 	private EditText ettext;
 	private ImageView c_img;
 	private VideoView c_video;
-	private NoteDB noteDB;// 声明数据库对象
+	private NoteDBskirt noteDB;// 声明数据库对象
 	private SQLiteDatabase dbWriter;
 	private File photoFile, videoFile;
-//	private static final String TAG = "MyActivity";
 	private static final String IMAGE_UNSPECIFIED = "image/*";// 查找文件类型为图片
 	private static final int PHOTO_REQUEST_CODE = 2000;
 	private static final int VIDEO_REQUEST_CODE = 2;
 	private static final int ALBUM_REQUEST_CODE = 3;
 
-	// private File fileName;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +62,7 @@ public class AddActivity extends Activity implements OnClickListener {// 2个按钮
 		savebtn.setOnClickListener(this);
 		canclebtn.setOnClickListener(this);
 		// 实例化数据库对象
-		noteDB = new NoteDB(this);
+		noteDB = new NoteDBskirt(this);
 		dbWriter = noteDB.getWritableDatabase();// 获得写入权限
 		createSDCardDir();
 		initView();
@@ -71,7 +75,7 @@ public class AddActivity extends Activity implements OnClickListener {// 2个按钮
 			// 创建一个文件夹对象，赋值为外部存储器的目录(即获得存储卡的路径)
 			File sdcardDir = Environment.getExternalStorageDirectory();
 			// 得到一个路径，内容是sdcard的文件夹路径和名字
-			String path = sdcardDir.getPath() + "/myClothes/tops";
+			String path = sdcardDir.getPath() + "/myClothes/skirt";
 			File path1 = new File(path);
 			if (!path1.exists()) {
 				// 若不存在，创建目录，可以在应用启动的时候创建
@@ -113,7 +117,7 @@ public class AddActivity extends Activity implements OnClickListener {// 2个按钮
 			// 获取sd卡路径，相片存在此路径中，数据库只存储路径
 			// 实例化对象，并获取绝对路径,以系统时间命名
 			String videoPath=Environment.getExternalStorageDirectory()
-					.getAbsoluteFile() + "/myClothes/tops/" + getTime1()+ ".mp4";
+					.getAbsoluteFile() + "/myClothes/skirt/" + getTime1()+ ".mp4";
 			videoFile = new File(videoPath);
 			ivideo.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(videoFile));// 存储视频
 			startActivityForResult(ivideo, VIDEO_REQUEST_CODE);// 传递带返回值的对象
@@ -226,7 +230,7 @@ public class AddActivity extends Activity implements OnClickListener {// 2个按钮
 		String fileName = "";
 		// 文件夹路径
 		String pathUrl = Environment.getExternalStorageDirectory()
-				+ "/myClothes/tops/";
+				+ "/myClothes/skirt/";
 		String imageName = "imageTest.jpg";
 		fileName = pathUrl + imageName;
 		return fileName;
@@ -243,7 +247,7 @@ public class AddActivity extends Activity implements OnClickListener {// 2个按钮
 		String fileName = "";
 		// 文件夹路径
 		String pathUrl = Environment.getExternalStorageDirectory().getPath()
-				+ "/myClothes/tops/";
+				+ "/myClothes/skirt/";
 		String imageName = getTime1() + ".jpg";
 		FileOutputStream fos = null;
 		fileName = pathUrl + imageName;
@@ -266,12 +270,12 @@ public class AddActivity extends Activity implements OnClickListener {// 2个按钮
 	// 创建添加数据的方法
 	public void addDB() {
 		ContentValues cv = new ContentValues();// 创建表内容对象并直接实例化
-		cv.put(NoteDB.CONTENT, ettext.getText().toString());// (键值对)下同，添加内容;从编辑框中获取内容并转换成string
-		cv.put(NoteDB.TIME, getTime2());
-		cv.put(NoteDB.PATH, photoFile + "");// 将路径转成string类型存储
-		cv.put(NoteDB.VIDEO, videoFile + "");
+		cv.put(NoteDBskirt.CONTENT, ettext.getText().toString());// (键值对)下同，添加内容;从编辑框中获取内容并转换成string
+		cv.put(NoteDBskirt.TIME, getTime2());
+		cv.put(NoteDBskirt.PATH, photoFile + "");// 将路径转成string类型存储
+		cv.put(NoteDBskirt.VIDEO, videoFile + "");
 		// 通过dbWriter将数据插入（写入）表中
-		dbWriter.insert(NoteDB.TABLE_NAME, null, cv);// (表名，条件，插入内容对象)
+		dbWriter.insert(NoteDBskirt.TABLE_NAME, null, cv);// (表名，条件，插入内容对象)
 
 	}
 
