@@ -1,12 +1,21 @@
 package com.example.kinect;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import com.example.mycloset.R;
 import com.example.mycloset.R.id;
 import com.example.mycloset.R.layout;
+import com.example.mycloset.WebViewActivity;
 
 import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Message;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -29,24 +38,25 @@ public class DetailsActivity extends Activity implements OnClickListener {
 		initView();
 		val = getIntent().getStringExtra("flag");// 接收按钮传来的价值对flag
 		Log.v("ang", val);
-		 show();
+		show();
 	}
 
 	private void show() {
-		val = getIntent().getStringExtra("flag");// 接收按钮传来的价值对flag
-		if (val .equals("10")) {
+		
+		if (ShirtActivity.myFlag.equals("10")) {
 			photo.setImageLevel(0);
 			photo.setScaleType(ScaleType.CENTER_CROP);
+			Log.v("ang", "show");
 		}
-		if (val .equals( "11")) {
+		if (val.equals("11")) {
 			photo.setImageLevel(1);
 			photo.setScaleType(ScaleType.CENTER_CROP);
 		}
-		if (val .equals("12")) {
+		if (val.equals("12")) {
 			photo.setImageLevel(2);
 			photo.setScaleType(ScaleType.CENTER_CROP);
 		}
-		if (val .equals( "13")) {
+		if (val.equals("13")) {
 			photo.setImageLevel(3);
 			photo.setScaleType(ScaleType.CENTER_CROP);
 		}
@@ -54,15 +64,15 @@ public class DetailsActivity extends Activity implements OnClickListener {
 			photo.setImageLevel(4);
 			photo.setScaleType(ScaleType.CENTER_CROP);
 		}
-		if (val .equals("15")) {
+		if (val.equals("15")) {
 			photo.setImageLevel(5);
 			photo.setScaleType(ScaleType.CENTER_CROP);
 		}
-		if (val .equals( "16")) {
+		if (val.equals("16")) {
 			photo.setImageLevel(6);
 			photo.setScaleType(ScaleType.CENTER_CROP);
 		}
-		if (val .equals( "17")) {
+		if (val.equals("17")) {
 			photo.setImageLevel(7);
 			photo.setScaleType(ScaleType.CENTER_CROP);
 		}
@@ -91,7 +101,7 @@ public class DetailsActivity extends Activity implements OnClickListener {
 				Message msg = new Message();
 				msg.what = 0x345;
 
-				if (val.equals("10") || val.equals("20") || val.equals("30")
+				if (ShirtActivity.myFlag.equals("10") || val.equals("20") || val.equals("30")
 						|| val.equals("40")) {
 					msg.obj = "0";
 				}
@@ -122,7 +132,10 @@ public class DetailsActivity extends Activity implements OnClickListener {
 				if (val.equals("17")) {
 					msg.obj = "7";
 				}
-				KinectActivity.getClientThread().revHandler.sendMessage(msg);
+				synchronized (this.getClass()) {
+					KinectActivity.getClientThread().revHandler.sendMessage(msg);
+				}
+				
 
 			} catch (Exception e) {
 
@@ -130,9 +143,45 @@ public class DetailsActivity extends Activity implements OnClickListener {
 			break;
 
 		case R.id.shop:
+			Intent i = new Intent(this, WebViewActivity.class);
+			if (val.equals("10")) {
+				i.putExtra("flag", "10");
+//				startActivityForResult(i, 10);
+			}
+			if (val.equals("11")) {
+				i.putExtra("flag", "11");
+//				startActivityForResult(i, 11);
+			}
+			if (val.equals("12")) {
 
+			}
+			if (val.equals("13")) {
+
+			}
+			if (val.equals("14")) {
+
+			}
+			if (val.equals("15")) {
+
+			}
+			if (val.equals("16")) {
+
+			}
+			if (val.equals("17")) {
+
+			}
+			startActivity(i);
+		   
 			break;
 		}
 
 	}
-}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+        val = data.getExtras().getString("result");//得到新Activity 关闭后返回的数据
+        Log.i("ang", val);
+		}
+	}
+

@@ -11,11 +11,23 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="20dp"
-        android:text="在shirt和pants/skirt模式下选好衣服查看全身效果哦！"
+        android:text="您当前处于全身模式！"
         android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:text="温馨提示：在shirt和pants/skirt模式下更换衣服，再进入此模式查看全身效果哦！"
+        android:textSize="15sp" />
+
     <Button
         android:id="@+id/allback"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Back to choose clothes!" />
+
 </LinearLayout>

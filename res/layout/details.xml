@@ -7,7 +7,7 @@
     <ImageView
         android:id="@+id/photo"
         android:layout_width="match_parent"
-        android:layout_height="226dp"
+        android:layout_height="278dp"
         android:src="@drawable/photo" />
 
     <LinearLayout

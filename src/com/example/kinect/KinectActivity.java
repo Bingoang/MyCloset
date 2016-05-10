@@ -1,17 +1,13 @@
 package com.example.kinect;
 
-import java.net.Socket;
 
 import com.example.mycloset.R;
-import com.example.mycloset.R.id;
-import com.example.mycloset.R.layout;
-
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -43,11 +39,14 @@ public class KinectActivity extends Activity implements OnClickListener {
 					clientThread = new ClientThread(new Handler() {
 						@Override
 						public void handleMessage(Message msg) {
-							// 如果消息来自子线程
+							// 如果消息来自ClientThread子线程,时时改变连接状态
 							if (msg.what == 0x123) {
-								// 将读取的内容追加显示在文本框中
-								// state.append("\n" + msg.obj.toString());
+								state.setTextColor(Color.parseColor("#FF0033"));
+								state.setText(msg.obj.toString());					
+							}
+							if (msg.what == 0x111) {
 								state.setText(msg.obj.toString());
+								state.setTextColor(Color.parseColor("#66CC33"));
 							}
 					}
 							

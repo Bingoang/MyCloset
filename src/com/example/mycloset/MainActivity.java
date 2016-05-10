@@ -35,25 +35,27 @@ public class MainActivity extends Activity implements OnClickListener {
 		aboutbtn.setOnClickListener(this);
 	}
 
+	private void startActivity(Activity activity) {
+		Intent i = new Intent(this, activity.getClass());
+		startActivity(i);
+	}
+
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.cbtn:
-			Intent i = new Intent(this, MyClothesActivity.class);
-			i.putExtra("flag", "1");// 键值对.值为string类型
-			startActivity(i);
+			startActivity(new MyClothesActivity());
 			break;
 
 		case R.id.sbtn:
-			Intent i2 = new Intent(this, ShopActivity.class);
-			i2.putExtra("flag", "2");
-			startActivity(i2);
+			Intent i;
+			i = new Intent(this, WebViewActivity.class);
+			i.putExtra("flag", "shop");
+			startActivity(i);
 			break;
 
 		case R.id.kbtn:
-			 Intent i3 = new Intent(this, KinectActivity.class);
-			 i3.putExtra("flag", "3");
-			 startActivity(i3);
+			startActivity(new KinectActivity());
 //			Toast toast = null;
 //			toast = Toast.makeText(getApplicationContext(), "嘿嘿，即将上线，敬请期待！",
 //					Toast.LENGTH_SHORT);
@@ -66,9 +68,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			break;
 
 		case R.id.abtn:
-			Intent i4 = new Intent(this, AboutActivity.class);
-			i4.putExtra("flag", "4");
-			startActivity(i4);
+			startActivity(new AboutActivity());
 			break;
 
 		}
