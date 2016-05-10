@@ -1,9 +1,4 @@
-package com.example.clothes;
-
-import com.example.kinect.PantSkirtActivity;
-import com.example.mycloset.R;
-import com.example.mycloset.R.id;
-import com.example.mycloset.R.layout;
+package com.example.mycloset;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -16,7 +11,7 @@ import android.widget.ImageView;
 public class MyClothesActivity extends Activity implements OnClickListener {
 
 	private ImageView topsbtn, pantsbtn, skirtbtn, shoesbtn;
-//	private Intent i;// 创建标识，来识别到底点的是哪个按钮
+	private Intent i;// 创建标识，来识别到底点的是哪个按钮
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -36,31 +31,23 @@ public class MyClothesActivity extends Activity implements OnClickListener {
 		shoesbtn.setOnClickListener(this);
 	}
 
-	private void startActivity(Activity activity) {
-		Intent i = new Intent(this, activity.getClass());
-		startActivity(i);
-	}
-
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.tops:
-//			i = new Intent(this, TopsActivity.class);
-//			i.putExtra("flag", "1");// 键值对.值为string类型
-//			startActivity(i);
-			startActivity(new TopsActivity());
+			i = new Intent(this, TopsActivity.class);
+			i.putExtra("flag", "1");// 键值对.值为string类型
+			startActivity(i);
 			break;
 
 		case R.id.pants:
-			startActivity(new PantsActivity());
+
 			break;
-			
 		case R.id.skirt:
-			startActivity(new SkirtActivity());
+
 			break;
-			
 		case R.id.shoes:
-			startActivity(new ShoesActivity());
+
 			break;
 		}
 

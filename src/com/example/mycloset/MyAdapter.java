@@ -1,8 +1,4 @@
-package com.example.clothes;
-
-import com.example.mycloset.R;
-import com.example.mycloset.R.id;
-import com.example.mycloset.R.layout;
+package com.example.mycloset;
 
 import android.content.Context;
 import android.database.Cursor;

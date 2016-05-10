@@ -26,18 +26,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.clothes.MyClothesActivity" >
+        <activity android:name="com.example.mycloset.MyClothesActivity" >
         </activity>
         <activity
-            android:name="com.example.clothes.TopsActivity"
+            android:name="com.example.mycloset.TopsActivity"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.example.clothes.AddActivity"
+            android:name="com.example.mycloset.AddActivity"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.example.clothes.SelectActivity"
+            android:name="com.example.mycloset.SelectActivity"
             android:screenOrientation="portrait" >
         </activity>
         <activity
@@ -70,42 +70,6 @@
         </activity>
         <activity
             android:name="com.example.kinect.AllActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="com.example.clothes.AddpantsActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="com.example.clothes.AddshoesActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="com.example.clothes.AddskirtActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="com.example.clothes.SelectpantsActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="com.example.clothes.SelectshoesActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="com.example.clothes.SelectskirtActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="com.example.clothes.ShoesActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="com.example.clothes.SkirtActivity"
-            android:screenOrientation="portrait" >
-        </activity>
-        <activity
-            android:name="com.example.clothes.PantsActivity"
             android:screenOrientation="portrait" >
         </activity>
     </application>

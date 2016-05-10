@@ -1,4 +1,4 @@
-package com.example.clothes;
+package com.example.mycloset;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,11 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import com.example.mycloset.R;
-import com.example.mycloset.R.id;
-import com.example.mycloset.R.layout;
-
 import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -32,21 +27,22 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-public class AddskirtActivity extends Activity implements OnClickListener {// 2¸ö°´Å¥£¬ËùÒÔÓÃ½Ó¿ÚÊµÏÖ
+public class AddActivity extends Activity implements OnClickListener {// 2¸ö°´Å¥£¬ËùÒÔÓÃ½Ó¿ÚÊµÏÖ
 	private String val;// ÓÃÀ´½ÓÊÕ°´´«¹ıÀ´µÄflag
 	private Button savebtn, canclebtn;
 	private EditText ettext;
 	private ImageView c_img;
 	private VideoView c_video;
-	private NoteDBskirt noteDB;// ÉùÃ÷Êı¾İ¿â¶ÔÏó
+	private NoteDB noteDB;// ÉùÃ÷Êı¾İ¿â¶ÔÏó
 	private SQLiteDatabase dbWriter;
 	private File photoFile, videoFile;
+//	private static final String TAG = "MyActivity";
 	private static final String IMAGE_UNSPECIFIED = "image/*";// ²éÕÒÎÄ¼şÀàĞÍÎªÍ¼Æ¬
 	private static final int PHOTO_REQUEST_CODE = 2000;
 	private static final int VIDEO_REQUEST_CODE = 2;
 	private static final int ALBUM_REQUEST_CODE = 3;
 
-
+	// private File fileName;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +58,7 @@ public class AddskirtActivity extends Activity implements OnClickListener {// 2¸
 		savebtn.setOnClickListener(this);
 		canclebtn.setOnClickListener(this);
 		// ÊµÀı»¯Êı¾İ¿â¶ÔÏó
-		noteDB = new NoteDBskirt(this);
+		noteDB = new NoteDB(this);
 		dbWriter = noteDB.getWritableDatabase();// »ñµÃĞ´ÈëÈ¨ÏŞ
 		createSDCardDir();
 		initView();
@@ -75,7 +71,7 @@ public class AddskirtActivity extends Activity implements OnClickListener {// 2¸
 			// ´´½¨Ò»¸öÎÄ¼ş¼Ğ¶ÔÏó£¬¸³ÖµÎªÍâ²¿´æ´¢Æ÷µÄÄ¿Â¼(¼´»ñµÃ´æ´¢¿¨µÄÂ·¾¶)
 			File sdcardDir = Environment.getExternalStorageDirectory();
 			// µÃµ½Ò»¸öÂ·¾¶£¬ÄÚÈİÊÇsdcardµÄÎÄ¼ş¼ĞÂ·¾¶ºÍÃû×Ö
-			String path = sdcardDir.getPath() + "/myClothes/skirt";
+			String path = sdcardDir.getPath() + "/myClothes/tops";
 			File path1 = new File(path);
 			if (!path1.exists()) {
 				// Èô²»´æÔÚ£¬´´½¨Ä¿Â¼£¬¿ÉÒÔÔÚÓ¦ÓÃÆô¶¯µÄÊ±ºò´´½¨
@@ -117,7 +113,7 @@ public class AddskirtActivity extends Activity implements OnClickListener {// 2¸
 			// »ñÈ¡sd¿¨Â·¾¶£¬ÏàÆ¬´æÔÚ´ËÂ·¾¶ÖĞ£¬Êı¾İ¿âÖ»´æ´¢Â·¾¶
 			// ÊµÀı»¯¶ÔÏó£¬²¢»ñÈ¡¾ø¶ÔÂ·¾¶,ÒÔÏµÍ³Ê±¼äÃüÃû
 			String videoPath=Environment.getExternalStorageDirectory()
-					.getAbsoluteFile() + "/myClothes/skirt/" + getTime1()+ ".mp4";
+					.getAbsoluteFile() + "/myClothes/tops/" + getTime1()+ ".mp4";
 			videoFile = new File(videoPath);
 			ivideo.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(videoFile));// ´æ´¢ÊÓÆµ
 			startActivityForResult(ivideo, VIDEO_REQUEST_CODE);// ´«µİ´ø·µ»ØÖµµÄ¶ÔÏó
@@ -230,7 +226,7 @@ public class AddskirtActivity extends Activity implements OnClickListener {// 2¸
 		String fileName = "";
 		// ÎÄ¼ş¼ĞÂ·¾¶
 		String pathUrl = Environment.getExternalStorageDirectory()
-				+ "/myClothes/skirt/";
+				+ "/myClothes/tops/";
 		String imageName = "imageTest.jpg";
 		fileName = pathUrl + imageName;
 		return fileName;
@@ -247,7 +243,7 @@ public class AddskirtActivity extends Activity implements OnClickListener {// 2¸
 		String fileName = "";
 		// ÎÄ¼ş¼ĞÂ·¾¶
 		String pathUrl = Environment.getExternalStorageDirectory().getPath()
-				+ "/myClothes/skirt/";
+				+ "/myClothes/tops/";
 		String imageName = getTime1() + ".jpg";
 		FileOutputStream fos = null;
 		fileName = pathUrl + imageName;
@@ -270,12 +266,12 @@ public class AddskirtActivity extends Activity implements OnClickListener {// 2¸
 	// ´´½¨Ìí¼ÓÊı¾İµÄ·½·¨
 	public void addDB() {
 		ContentValues cv = new ContentValues();// ´´½¨±íÄÚÈİ¶ÔÏó²¢Ö±½ÓÊµÀı»¯
-		cv.put(NoteDBskirt.CONTENT, ettext.getText().toString());// (¼üÖµ¶Ô)ÏÂÍ¬£¬Ìí¼ÓÄÚÈİ;´Ó±à¼­¿òÖĞ»ñÈ¡ÄÚÈİ²¢×ª»»³Éstring
-		cv.put(NoteDBskirt.TIME, getTime2());
-		cv.put(NoteDBskirt.PATH, photoFile + "");// ½«Â·¾¶×ª³ÉstringÀàĞÍ´æ´¢
-		cv.put(NoteDBskirt.VIDEO, videoFile + "");
+		cv.put(NoteDB.CONTENT, ettext.getText().toString());// (¼üÖµ¶Ô)ÏÂÍ¬£¬Ìí¼ÓÄÚÈİ;´Ó±à¼­¿òÖĞ»ñÈ¡ÄÚÈİ²¢×ª»»³Éstring
+		cv.put(NoteDB.TIME, getTime2());
+		cv.put(NoteDB.PATH, photoFile + "");// ½«Â·¾¶×ª³ÉstringÀàĞÍ´æ´¢
+		cv.put(NoteDB.VIDEO, videoFile + "");
 		// Í¨¹ıdbWriter½«Êı¾İ²åÈë£¨Ğ´Èë£©±íÖĞ
-		dbWriter.insert(NoteDBskirt.TABLE_NAME, null, cv);// (±íÃû£¬Ìõ¼ş£¬²åÈëÄÚÈİ¶ÔÏó)
+		dbWriter.insert(NoteDB.TABLE_NAME, null, cv);// (±íÃû£¬Ìõ¼ş£¬²åÈëÄÚÈİ¶ÔÏó)
 
 	}
 
