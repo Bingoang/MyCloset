@@ -110,26 +110,26 @@ public class ClientThread implements Runnable {
 			// }.start();
 
 			// 为当前线程初始化Looper
-//			Looper.prepare();
-//			// 创建revHandler对象
-//			revHandler = new Handler() {
-//
-//				@Override
-//				public void handleMessage(Message msg) {
-//					// 接收到UI线程的中用户输入的数据
-//					if (msg.what == 0x345) {
-//						// 将用户在文本框输入的内容写入网络
-//						try {
-//							os.write((msg.obj.toString()).getBytes("gbk"));
-//						} catch (Exception e) {
-//							e.printStackTrace();
-//						}
-//					}
-//				}
-//
-//			};
-//			// 启动Looper
-//			Looper.loop();
+			Looper.prepare();
+			// 创建revHandler对象,此处作用是向服务器发信息，不能删哦！
+			revHandler = new Handler() {
+
+				@Override
+				public void handleMessage(Message msg) {
+					// 接收到UI线程的中用户输入的数据
+					if (msg.what == 0x345) {
+						// 将用户在文本框输入的内容写入网络
+						try {
+							os.write((msg.obj.toString()).getBytes("gbk"));
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				}
+
+			};
+			// 启动Looper
+			Looper.loop();
 			
 		} catch (SocketTimeoutException e) {
 			Message msg = new Message();
