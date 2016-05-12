@@ -1,24 +1,43 @@
 package com.example.kinect;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.example.mycloset.R;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
-public class ShirtActivity extends Activity implements OnClickListener {
-	private Button s0, s1, s2, s3, s4, s5, s6, s7;
+public class ShirtActivity extends Activity implements OnItemClickListener,
+		OnScrollListener {
+	private ListView listView;
+	private SimpleAdapter simpleAdapter;
+	private List<Map<String, Object>> dataList;
 	private Intent i;
-	public static String myFlag = null;
+	public static int myFlag = 0;
+	private int[] images = new int[] { R.drawable.nikebag, R.drawable.t1,
+			R.drawable.t2, R.drawable.t3, R.drawable.t4, R.drawable.t5,
+			R.drawable.t6, R.drawable.t7 };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.shirt);
+		setContentView(R.layout.listview);
 		initView();// 初始化
 		shirtMode();// 进入上衣模式
 
@@ -41,72 +60,66 @@ public class ShirtActivity extends Activity implements OnClickListener {
 
 	}
 
+
 	private void initView() {
-		s0 = (Button) findViewById(R.id.s0);
-		s1 = (Button) findViewById(R.id.s1);
-		s2 = (Button) findViewById(R.id.s2);
-		s3 = (Button) findViewById(R.id.s3);
-		s4 = (Button) findViewById(R.id.s4);
-		s5 = (Button) findViewById(R.id.s5);
-		s6 = (Button) findViewById(R.id.s6);
-		s7 = (Button) findViewById(R.id.s7);
-		s0.setOnClickListener(this);
-		s1.setOnClickListener(this);
-		s2.setOnClickListener(this);
-		s3.setOnClickListener(this);
-		s4.setOnClickListener(this);
-		s5.setOnClickListener(this);
-		s6.setOnClickListener(this);
-		s7.setOnClickListener(this);
+		listView = (ListView) findViewById(R.id.listView);
+		listView.setOnItemClickListener(this);
+		listView.setOnScrollListener(this);
+		dataList = new ArrayList<Map<String, Object>>();
+		simpleAdapter = new SimpleAdapter(this, dataList, R.layout.item,
+				new String[] { "pic" }, new int[] { R.id.pic });
+		getData();
+		listView.setAdapter(simpleAdapter);
+	}
+
+	private List<Map<String, Object>> getData() {
+
+		for (int i = 0; i < images.length; i++) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("pic", images[i]);
+			dataList.add(map);
+		}
+		return dataList;
+
+	}
+
+	// 事件处理监听器方法
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		i = new Intent(this, DetailsActivity.class);
+		int a=(int) listView.getItemIdAtPosition(position);//a:0~7
+		Log.v("ang","position"+a);
+		ShirtActivity.myFlag = 10+a;//myFlag：10~17
+		startActivity(i);
+	}
+
+	@Override
+	public void onScroll(AbsListView arg0, int arg1, int arg2, int arg3) {
+		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void onClick(View v) {
-		i = new Intent(this, DetailsActivity.class);
-		switch (v.getId()) {
-		case R.id.s0:
-			i.putExtra("flag", "10");// 键值对.值为string类型
-			ShirtActivity.myFlag = "10";
-			startActivity(i);
-			break;
-
-		case R.id.s1:
-			i.putExtra("flag", "11");// 键值对.值为string类型
-			startActivity(i);
-			break;
-
-		case R.id.s2:
-			i.putExtra("flag", "12");// 键值对.值为string类型
-			startActivity(i);
-			break;
-
-		case R.id.s3:
-			i.putExtra("flag", "13");// 键值对.值为string类型
-			startActivity(i);
-			break;
-
-		case R.id.s4:
-			i.putExtra("flag", "14");// 键值对.值为string类型
-			startActivity(i);
-			break;
-
-		case R.id.s5:
-			i.putExtra("flag", "15");// 键值对.值为string类型
-			startActivity(i);
-			break;
-
-		case R.id.s6:
-			i.putExtra("flag", "16");// 键值对.值为string类型
-			startActivity(i);
-			break;
-
-		case R.id.s7:
-			i.putExtra("flag", "17");// 键值对.值为string类型
-			startActivity(i);
-			break;
-
-		}
+	public void onScrollStateChanged(AbsListView view, int scrollState) {
+		// 手指离开屏幕前，用力滑了一下
+//		if (scrollState == SCROLL_STATE_FLING) {
+//			for (int i = 0; i < images.length; i++) {
+//				Map<String, Object> map = new HashMap<String, Object>();
+//				map.put("pic", images[i]);
+//				dataList.add(map);
+//			}
+//			listView.setAdapter(simpleAdapter);
+//			simpleAdapter.notifyDataSetChanged();// 通知UI主线程刷新页面
+//		} else
+//		// 停止滚动
+//		if (scrollState == SCROLL_STATE_IDLE) {
+//
+//		} else
+//		 正在滚动
+//		if (scrollState == SCROLL_STATE_TOUCH_SCROLL) {
+//
+//		}
 
 	}
 

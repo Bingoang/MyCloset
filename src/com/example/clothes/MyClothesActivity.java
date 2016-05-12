@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView;
@@ -19,8 +20,8 @@ public class MyClothesActivity extends Activity implements OnClickListener {
 //	private Intent i;// 创建标识，来识别到底点的是哪个按钮
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.clothes);
 		initView();// 初始化
 	}

@@ -1,20 +1,15 @@
 package com.example.mycloset;
 
-import com.example.kinect.DetailsActivity;
 import com.example.mycloset.R;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ImageView.ScaleType;
 
 public class WebViewActivity extends Activity {
 	private String val;// 接收传来的flag
@@ -133,53 +128,4 @@ public class WebViewActivity extends Activity {
 		});
 	}
 
-	// 改写手机返回键
-//	@Override
-//	public boolean onKeyDown(int keyCode, KeyEvent event) {
-//		// 当keycode代码位返回按键时
-//		if (keyCode == KeyEvent.KEYCODE_BACK) {
-//			// Toast.makeText(this, webView.getUrl(),
-//			// Toast.LENGTH_SHORT).show();
-//			// 因为已经用webview覆盖url加载方式使网页显示在webview上，所以webview会自动生成历史记录
-//			// 所以只用判断webview能否返回上一界面
-//			if (webView.canGoBack()) {
-//				 //如果能，则返回上一界面
-//				Log.v("ang","goback");
-//				 webView.goBack();
-////				/* 给上一个Activity返回结果 */
-////				int i = Integer.parseInt(val);
-////				Log.v("ang", i + "");
-////				this.setResult(i);
-////				/* 结束本Activity */
-////				this.finish();
-//				
-//	      
-////	                //数据是使用Intent返回
-////	                Intent intent = new Intent();
-////	                //把返回数据存入Intent
-////	                intent.putExtra("result", val);
-////	                //设置返回数据
-////	                WebViewActivity.this.setResult(RESULT_OK, intent);
-////	                //关闭Activity
-////	                WebViewActivity.this.finish();
-//				
-//				return true;
-//			} else {
-//				// 如果不能返回上一级，即已到底，则退出程序
-//				Log.v("ang","shit");
-//				System.exit(0);
-//			}
-//
-//		}
-//		return super.onKeyDown(keyCode, event);
-//	}
-
-
-
-	// // 给返回的页面传递flag,否则再次按tryon时无法发送命令给客户端
-	// private void goBackFlag() {
-	// Intent i = new Intent(this, DetailsActivity.class);
-	// i.putExtra("flag", val);
-	// startActivity(i);
-	// }
 }

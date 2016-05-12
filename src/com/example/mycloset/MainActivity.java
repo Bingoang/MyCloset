@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 
 public class MainActivity extends Activity implements OnClickListener {
 	private ImageView clothesbtn, shopbtn, kinectbtn, aboutbtn;
@@ -20,6 +22,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);//»•µÙactionbar
 		setContentView(R.layout.activity_main);
 		initView();// ≥ı ºªØ
 	}
@@ -44,6 +47,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.cbtn:
+//			clothesbtn.setColorFilter(Color.parseColor("#99000000"));
 			startActivity(new MyClothesActivity());
 			break;
 

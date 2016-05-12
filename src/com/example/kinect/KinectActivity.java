@@ -1,6 +1,5 @@
 package com.example.kinect;
 
-
 import com.example.mycloset.R;
 import android.app.Activity;
 import android.content.Intent;
@@ -9,9 +8,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class KinectActivity extends Activity implements OnClickListener {
 	public static TextView state;
@@ -23,14 +24,10 @@ public class KinectActivity extends Activity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.kinect);
 		initView();// 初始化
-		Message msg=new Message();
-		if (msg.what == 0x123) {
-		// 将读取的内容追加显示在文本框中
-		state.setText(msg.obj.toString());	}
 	}
-	
 
 	public static ClientThread getClientThread() {
 		if (clientThread == null) {
@@ -42,15 +39,21 @@ public class KinectActivity extends Activity implements OnClickListener {
 							// 如果消息来自ClientThread子线程,时时改变连接状态
 							if (msg.what == 0x123) {
 								state.setTextColor(Color.parseColor("#FF0033"));
-								state.setText(msg.obj.toString());					
+								state.setText(msg.obj.toString());	
+//								if(msg.obj.equals("网络连接超时！")){
+//									Toast.makeText(this, "网络连接超时，请检查网络连接！", Toast.LENGTH_SHORT).show();
+//							}
+//								if(msg.obj.equals("已断开！")){
+//									Toast.makeText(this, "网络连接超时，请检查网络连接！", Toast.LENGTH_SHORT).show();
+//							}
 							}
 							if (msg.what == 0x111) {
 								state.setText(msg.obj.toString());
 								state.setTextColor(Color.parseColor("#66CC33"));
 							}
 					}
-							
-						}
+					}	
+						
 					);
 				}
 			}

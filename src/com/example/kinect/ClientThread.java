@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.WebView.FindListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ClientThread implements Runnable {
 	private Socket s;
